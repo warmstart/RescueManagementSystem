@@ -72,6 +72,11 @@ def alarm(message):
     for p in all_people:
         send_sms(message, p.phoneNumber)
 
+def index(request):
+    ## On call to index, check if there is an active mission
+
+    return render(request, 'editor.html', {})
+
 def alarmWebStart(request):
     return render(request, 'editor.html', {})
 
@@ -86,3 +91,6 @@ def alarmWebCreate(request):
 
     alarm("Bergwacht Alarm " + missionCreate['title'] + " - " + missionCreate['text'])
     return HttpResponse("Alarm wurde gesendet")
+
+def viewMission(request):
+    return render(request, 'viewer.html', {})
