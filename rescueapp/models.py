@@ -22,7 +22,7 @@ class texts(models.Model):
 class feedback(models.Model):
     fromUser     = models.ForeignKey(people)
     jn           = models.BooleanField()
-    text         = models:CharField(max_length=400)
+    text         = models.CharField(max_length=400)
 
 class gpsdata(models.Model):
     fromUser     = models.ForeignKey(people)
