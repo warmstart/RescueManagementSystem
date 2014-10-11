@@ -33,5 +33,5 @@ def incomingMessage(request):
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
-def sendSMS(request):
+##def sendSMS(request):
     
