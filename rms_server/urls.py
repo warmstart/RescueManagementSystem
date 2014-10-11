@@ -18,5 +18,7 @@ urlpatterns = patterns('',
 
     url(r'^test', testapp.views.test, name='test'),
     url(r'incomingMessage', rescueapp.views.incomingMessage, name='incomingMessage'),
+    url(r'alarmWebStart', rescueapp.views.alarmWebStart, name='alarmWebStart'),
+    url(r'alarmWebCreate', rescueapp.views.alarmWebCreate, name='alarmWebCreate'),
 
 )

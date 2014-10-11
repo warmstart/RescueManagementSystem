@@ -64,6 +64,7 @@ def alarm(message):
     ## take message and relay it to all people
     ## create mission
     newmission = missions(startTime = timezone.now(), missionTitle=message);
+    newmission.save()
 
     ## TODO: check that only one mission is active at once!
     all_people = people.objects.all()
@@ -71,3 +72,17 @@ def alarm(message):
     for p in all_people:
         send_sms(message, p.phoneNumber)
 
+def alarmWebStart(request):
+    return render(request, 'editor.html', {})
+
+
+def alarmWebCreate(request):
+    try:
+        missionCreate = { 'title':    request.POST['titel'],
+                          'text':     request.POST['comment'],
+                          'status':   request.POST['status'] }
+    except(KeyError):
+        print "KeyError " + str(KeyError)
+
+    alarm("Bergwacht Alarm " + missionCreate['title'] + " - " + missionCreate['text'])
+    return HttpResponse("Alarm wurde gesendet")
