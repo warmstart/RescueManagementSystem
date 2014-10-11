@@ -17,6 +17,8 @@ def incomingMessage(request):
         print 'json receiving error'
         print str(e)
 
+    ## TODO: Only return the OK status, if processing was actually ok ;) Not only when no exception is risen
+
     response_data = {}
     response_data['statusCode'] = 2000;
     response_data['statusMessage'] = "ok"
