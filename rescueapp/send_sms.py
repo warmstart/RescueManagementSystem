@@ -35,7 +35,7 @@ def send_sms(message, nr):
   
     # 2.) -- create text message ----------------
 ## TODO unicode the message
-    message = WebSmsComToolkit.TextMessage([nr], message)
+    message = WebSmsComToolkit.TextMessage([long(nr)], unicode(message, "utf-8"))
 #    message = sample_message_binary_sms()
     
     # 3.) -- send message ------------------
