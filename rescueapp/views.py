@@ -35,15 +35,7 @@ def incomingMessage(request):
         print str(e)
 
     ## TODO: Only return the OK status, if processing was actually ok ;) Not only when no exception is risen
-
-    text = texts(receiveTime=timezone.now(), sender=data['senderAddress'], text=data['textMessageContent'])
-    text.save()
-    send_sms.send("received", senderAddress)
-
-
-    response_data = {}
-    response_data['statusCode'] = 2000;
-    response_data['statusMessage'] = "ok"
+    return HttpRespone("This is an error")
 
 def sendSMS(message, nr):
     send_sms.send(message,nr)    
