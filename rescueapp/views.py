@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 
-import send_sms
+from send_sms import send_sms
 
 from rescueapp.models import texts
 
@@ -21,7 +21,7 @@ def incomingMessage(request):
         print 'json received'
         text = texts(receiveTime=timezone.now(), sender=data['senderAddress'], text=data['textMessageContent'])
         text.save()
-        send_sms.send("received", senderAddress)
+        send_sms("received", url)
 
 
         response_data = {}
@@ -35,7 +35,7 @@ def incomingMessage(request):
         print str(e)
 
     ## TODO: Only return the OK status, if processing was actually ok ;) Not only when no exception is risen
-    return HttpRespone("This is an error")
+    return HttpResponse("This is an error")
 
 def sendSMS(message, nr):
     send_sms.send(message,nr)    

@@ -8,66 +8,65 @@
   3.) send message with client.
 --------------------------------------------------------------------------------------
 """
-class send_sms:
-  import sys
-  import traceback
-  import WebSmsComToolkit
+import sys
+import traceback
+import WebSmsComToolkit
 
   
 #--- Modify these values to your needs ----------------
-  username                = 'sege@warmstart.eu'
-  password                = 'FnRMUcXMhb'
-  gateway_url             = 'https://api.websms.com/'
-  recipient_address_list  = [491798135814L]
-  message_text_unicode    = u"Willkommen zur BusinessPlatform SDK von websms.com! Diese Nachricht enthält 160 Zeichen. Sonderzeichen: äöüß. Eurozeichen: \u20ac. Das Ende wird nun ausgezählt43210"
-  max_sms_per_message     = 1
+username                = 'sege@warmstart.eu'
+password                = 'FnRMUcXMhb'
+gateway_url             = 'https://api.websms.com/'
+recipient_address_list  = [491798135814L]
+message_text_unicode    = u"Willkommen zur BusinessPlatform SDK von websms.com! Diese Nachricht enthält 160 Zeichen. Sonderzeichen: äöüß. Eurozeichen: \u20ac. Das Ende wird nun ausgezählt43210"
+max_sms_per_message     = 1
 
 # true: do not send sms for real, just test interface
-  is_test                 = False
+is_test                 = False
 #-------------------------------------------------------
 
-  def send(message, nr):
+def send_sms(message, nr):
   
-    try:
+  try:
     
     # 1.) -- create sms client (once) ------
-      client         = WebSmsComToolkit.Client(gateway_url, username, password)
+    client         = WebSmsComToolkit.Client(gateway_url, username, password)
 #    client.verbose = True
   
     # 2.) -- create text message ----------------
 ## TODO unicode the message
-      message = WebSmsComToolkit.TextMessage([nr], message)
+    message = WebSmsComToolkit.TextMessage([nr], message)
 #    message = sample_message_binary_sms()
     
     # 3.) -- send message ------------------
-      response = client.send(message, max_sms_per_message, is_test)
-    
-      print "-- Response Object --"
-      print "transferId      : " + str(response.transferId)
-      print "clientMessageId : " + str(response.clientMessageId)
-      print "statusCode      : " + str(response.statusCode)
-      print "statusMessage   : " + str(response.statusMessage)
-      print "rawContent      : " + str(response.rawContent)
+    response = client.send(message, max_sms_per_message, is_test)
+   
+    print "-- Response Object --"
+    print "transferId      : " + str(response.transferId)
+    print "clientMessageId : " + str(response.clientMessageId)
+    print "statusCode      : " + str(response.statusCode)
+    print "statusMessage   : " + str(response.statusMessage)
+    print "rawContent      : " + str(response.rawContent)
   
-    except WebSmsComToolkit.ParameterValidationException, e:
-      print "ParameterValidationException caught: " + str(e.message) + "\n"
+  except WebSmsComToolkit.ParameterValidationException, e:
+    print "ParameterValidationException caught: " + str(e.message) + "\n"
     
-    except WebSmsComToolkit.AuthorizationFailedException, e:
-      print "AuthorizationFailedException caught: " + str(e.message) + "\n"
+  except WebSmsComToolkit.AuthorizationFailedException, e:
+    print "AuthorizationFailedException caught: " + str(e.message) + "\n"
   
-    except WebSmsComToolkit.ApiException, e:
+  except WebSmsComToolkit.ApiException, e:
     # possibility to handle API status codes e.code
-      print "ApiException caught. statusMessage: " + str(e.message) + ", statusCode: " + str(e.code) + "\n"
+    print "ApiException caught. statusMessage: " + str(e.message) + ", statusCode: " + str(e.code) + "\n"
   
-    except WebSmsComToolkit.HttpConnectionException, e:
-      print "HttpConnectionException caught: " + str(e.message) + "HTTP Status: " + str(e.code) + "\n"
+  except WebSmsComToolkit.HttpConnectionException, e:
+    print "HttpConnectionException caught: " + str(e.message) + "HTTP Status: " + str(e.code) + "\n"
   
-    except WebSmsComToolkit.UnknownResponseException, e:
-      print "UnknownResponseException caught: " + str(e.message) + "\n"
+  except WebSmsComToolkit.UnknownResponseException, e:
+    print "UnknownResponseException caught: " + str(e.message) + "\n"
     
-    except Exception, e:
-      print "Exception caught: " , e
-      traceback.print_exc(file=sys.stdout)
+  except Exception, e:
+    print "Exception caught: " , e
+    traceback.print_exc(file=sys.stdout)
 
 # END 
 
