@@ -23,7 +23,7 @@ def incomingMessage(request):
 
     ## TODO: Only return the OK status, if processing was actually ok ;) Not only when no exception is risen
 
-    text = texts(receiveTime=timezone.now(), sender=data['senderAddress'], text=data['textMessageContent'], fromMission=5)
+    text = texts(receiveTime=timezone.now(), sender=data['senderAddress'], text=data['textMessageContent'])
     text.save()
 
     response_data = {}
