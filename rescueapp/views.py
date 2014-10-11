@@ -1,5 +1,5 @@
 import json
-import send_sms
+#import send_sms
 
 from django.http import HttpResponse
 from django.shortcuts import render
