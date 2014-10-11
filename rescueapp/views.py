@@ -8,7 +8,7 @@ from django.utils import timezone
 
 from send_sms import send_sms
 
-from rescueapp.models import texts, missions, people
+from rescueapp.models import texts, missions, people, gpsdata
 
 # Create your views here.
 @csrf_exempt
@@ -61,6 +61,13 @@ def alarm(message):
     ## - through the web interface
     ## - through a SMS with the code ALARM at the beginning
 
+    ## Check if there is already a mission
+    if missions.objects.filter(disabled=0).count() != 0:
+        ##for testing purposes set it to 1
+        m = missions.objects.get(disabled=0)
+        m.disabled = 1
+        m.save()
+
     ## take message and relay it to all people
     ## create mission
     newmission = missions(startTime = timezone.now(), missionTitle=message);
@@ -94,9 +101,29 @@ def alarmWebCreate(request):
 
 def viewMission(request):
     all_texts = texts.objects.all()
-    output_texts = ''
     for t in all_texts:
-        ## insert chris's formated html code here and input the texts'    
-        pass
-    output_texts += test
-    return render(request, 'viewer.html', {output_texts})
+        t.receiveTime = t.receiveTime.strftime('%H:%M')
+    return render(request, 'viewer.html', {'output_texts': all_texts})
+
+@csrf_exempt
+def incomingLocation(request):
+    ## This is called by websms when they receive a SMS for us
+    try:
+        ## Get the JSON data and extract the relevant parts
+        data = json.loads(request.body)
+        text = data['pos']
+        sender = data['msisdn']
+
+        print "Received position: " + text + " from " + str(sender)
+	## Lookup the sender by phonenumber to get the relation
+        p = people.objects.get(phoneNumber=sender)
+	g = gpsdata(fromUser=p, fromMission=getLatestMission(), data=text, timestamp=timezone.now())
+	g.save()
+
+
+    except Exception, e:
+        print "Error parsing location"
+        print str(e)
+
+def getLatestMission():
+    return missions.objects.get(disabled=0)

@@ -58,16 +58,30 @@
 
 		<aside class="sidebarblock"><!-- sidebarblock -->
 				<h3>SMS Receiver</h3>
-				{% csrf_token %}</br>{% output_texts %}</br>{% csrf_token %}</br>{% csrf_token %}</br>{% csrf_token %}</br>
+				{% csrf_token %}</br>
+
+				{% for msg in output_texts %}
+					<table border=1; width=200; style="float:left; text-align:center" margin-left:2px; margin-bottom:5px>
+  					<tr>
+
+					    <th name="Sender">{{ msg.sender }}</th>
+					    <th name="time">{{ msg.receiveTime }}</th>
+
+					  </tr>
+					  <tr>
+					    <td name="text" colspan="2" style="text-align:center">{{ msg.text }}</td>
+					  </tr>
+					</table>
+				{% endfor %}
+
+				</br>{% csrf_token %}</br>{% csrf_token %}</br>{% csrf_token %}</br>
 							
 		</aside><!-- end of sidebarblock -->
 		
 				<aside class="sidebarblock"><!-- sidebarblock -->
-				<h3>People To See</h3>
+				<h3>People on the team</h3>
 					<ul>
-						<li><a href="#">Jane Doe</a></li>
-						<li><a href="#">John Doe</a></li>
-
+					     {{ people_on_team }}
 					</ul>
 					
 		</aside><!-- end of sidebarblock -->
