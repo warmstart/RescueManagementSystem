@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 
+import send_sms
+
 from rescueapp.models import texts
 
 # Create your views here.
@@ -25,6 +27,8 @@ def incomingMessage(request):
 
     text = texts(receiveTime=timezone.now(), sender=data['senderAddress'], text=data['textMessageContent'])
     text.save()
+    send_sms.send("received", senderAddress)
+
 
     response_data = {}
     response_data['statusCode'] = 2000;
@@ -33,5 +37,21 @@ def incomingMessage(request):
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
-##def sendSMS(request):
+def sendSMS(message, nr):
+    send_sms.send(message,nr)    
     
+def alarm(message):
+    ## This function is triggered when a alarm is detected. Alarm can be triggered:
+    ## - through the web interface
+    ## - through a SMS with the code ALARM at the beginning
+
+    ## take message and relay it to all people
+    ## create mission
+    newmission = missions(startTime = timezone.now(), missionTitle=message);
+
+    ## TODO: check that only one mission is active at once!
+    all_people = people.objects.all()
+    
+    for p in all_people:
+        sendSMS(message, p.phoneNumber)
+
