@@ -14,7 +14,7 @@ class missions(models.Model):
     missionTitle = models.CharField(max_length=120)
 
 class texts(models.Model):
-    fromMission  = models.ForeignKey(missions)
+    fromMission  = models.ForeignKey(missions, null=True)
     receiveTime  = models.DateTimeField()
     sender       = models.CharField(max_length=100)
     text         = models.CharField(max_length=400)
