@@ -8,20 +8,38 @@ from django.utils import timezone
 
 from send_sms import send_sms
 
-from rescueapp.models import texts
+from rescueapp.models import texts, missions, people
 
 # Create your views here.
 @csrf_exempt
 def incomingMessage(request):
+    ## This is called by websms when they receive a SMS for us
     try:
+        ## Get the JSON data and extract the relevant parts
         data = json.loads(request.body)
-        label = data['messageType']
-        url = data['senderAddress']
-        print label,url
-        print 'json received'
-        text = texts(receiveTime=timezone.now(), sender=data['senderAddress'], text=data['textMessageContent'])
-        text.save()
-        send_sms("received", url)
+        text = data['textMessageContent']
+        sender = data['senderAddress']
+
+        print "Received textmessage: " + text + " from " + str(sender)
+
+
+        if (text.startswith('alarm') or text.startswith('Alarm') or text.startswith('ALARM')):
+            ## Alarm message detected -> Bounce alarm to all people
+            alarm("Bergwacht " + text)
+
+        elif (text.startswith('j ') or text.startswith('J ') or text.startswith('ja') or text.startswith('Ja') or test.startswith('JA')):
+          ## Feedback case YES -> Save Feedback and add person to group
+            pass
+
+        elif (text.startswith('n ') or text.startswith('N ') or text.startswith('ne') or text.startswith('Ne') or text.startswith('NE')):
+          ## Feedback case NO -> Save Feedback
+            pass
+
+        else:
+	  ## Add the current time and save the SMS for the group chat
+          text = texts(receiveTime=timezone.now(), sender=sender, text=text)
+          text.save()
+#          send_sms("received", url)
 
 
         response_data = {}
@@ -37,8 +55,6 @@ def incomingMessage(request):
     ## TODO: Only return the OK status, if processing was actually ok ;) Not only when no exception is risen
     return HttpResponse("This is an error")
 
-def sendSMS(message, nr):
-    send_sms.send(message,nr)    
     
 def alarm(message):
     ## This function is triggered when a alarm is detected. Alarm can be triggered:
@@ -53,5 +69,5 @@ def alarm(message):
     all_people = people.objects.all()
     
     for p in all_people:
-        sendSMS(message, p.phoneNumber)
+        send_sms(message, p.phoneNumber)
 
