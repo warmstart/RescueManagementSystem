@@ -93,4 +93,10 @@ def alarmWebCreate(request):
     return HttpResponse("Alarm wurde gesendet")
 
 def viewMission(request):
-    return render(request, 'viewer.html', {})
+    all_texts = texts.objects.all()
+    output_texts = ''
+    for t in all_texts:
+        ## insert chris's formated html code here and input the texts'    
+        pass
+    output_texts += test
+    return render(request, 'viewer.html', {output_texts})
