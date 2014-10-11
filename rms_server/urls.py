@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+import rescueapp.views
 import hello.views
 import testapp.views
 
@@ -16,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^test', testapp.views.test, name='test'),
+    url(r'incomingMessage', rescueapp.views.incomingMessage, name='incomingMessage'),
 
 )
