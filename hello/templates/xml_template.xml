@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx version="1.1" creator="RMS"> 
+<trk>
+<trkseg>
+{% for g in trackdata %}
+<trkpt lat="{{g.data.split()[0] }} " lon="{{g.data.split()[1] }}"> </trkpt>
+{% endfor %}
+</trkseg>
+</trk>
+</gpx>

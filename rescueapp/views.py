@@ -137,3 +137,7 @@ def getTeam():
     team = people.objects.filter(feedback__jn=True)
 
     return team
+
+def getGPX(request):
+    xml = render_to_string('xml_template.xml', {'gps': gpsdata.objects.all()}
+    return xml
