@@ -134,6 +134,6 @@ def getLatestMission():
 
 def getTeam(request):
     m = getLatestMission()
-    team = people.objects.filter(feedback__jn=True).filter(feedback__mission=m)
+    team = people.objects.filter(feedback__jn=True).filter(feedback__fromMission=m)
 
     print team
