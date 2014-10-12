@@ -32,11 +32,10 @@
 			<section id="content"><!-- #content -->
 			
         		<article>
-							<h2><a href="#">Smartphone Receiver</a></h2>
-							<div id="basicMap" style="width: 550px; height: 400px">
-<iframe src="http://www.mappingsupport.com/p/gmap4.php?q=http://secret-chamber-4835.herokuapp.com/getGPX.gpx" width="550px" height="400px" align="center"></iframe>
-</div>	
-														
+							<h2><a href="#">Herausgeber</a></h2>			
+		
+								<p><b>Bergwacht Bayern<br />im Bayerischen Roten Kreuz, KdöR&nbsp; <br /></b></p>
+								<p class="bodytext">Am Sportpark 6<br />83646 Bad Tölz<br />Tel.: 08041 / 79 43 8 -&nbsp;0<br />Fax: 08041 / 79 43 8 -&nbsp;10<br />eMail: <a href="javascript:linkTo_UnCryptMailto('nbjmup+jogpAcfshxbdiu.cbzfso/psh');">info(at)bergwacht-bayern.org</a></p>						
 						</article>
 						
         		
@@ -44,42 +43,7 @@
 			</section><!-- end of #content -->
 		</section><!-- end of #container -->
 
-		<aside class="sidebarblock"><!-- sidebarblock -->
-				<h3>SMS Receiver</h3>
-				{% csrf_token %}
-
-				{% for msg in output_texts %}
-					<table border=1; width=200; style="float:left; text-align:center" margin-left:2px; margin-bottom:5px>
-  					<tr>
-
-					    <th name="Sender">{{ msg.sender }}</th>
-					    <th name="time">{{ msg.receiveTime }}</th>
-
-					  </tr>
-					  <tr>
-					    <td name="text" colspan="2" style="text-align:center">{{ msg.text }}</td>
-					  </tr>
-					</table>
-				{% endfor %}
-
-				<form method="post"> <input name="sms" type="text" size="30" maxlength="160">  <br> <input type="submit" value="Send"> </form>							
-		</aside><!-- end of sidebarblock -->
-		
-				<aside class="sidebarblock"><!-- sidebarblock -->
-				<h3>People on the team</h3>
-					{% if people %}
-					<ul>
-					    {% for p in people %}
-					    <li>{{ p.name }}</li>
-					    {% endfor %}
-					</ul>
-					{% endif %}
-					
-		</aside><!-- end of sidebarblock -->
-		
-
-	</section><!-- end of #main content and sidebar-->
-
+		<
 	<footer>
 		<section id="footer-area">
 

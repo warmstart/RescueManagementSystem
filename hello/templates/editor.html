@@ -18,8 +18,8 @@
 		<div class="menu">
 			<ul>
 				<li><a href="alarmWebStart">Create new mission</a></li>
-				<li><a href="viewMission">View current mission</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
+                <li><a href="viewMission">View current mission</a></li>
+                <li><a href="contactUs">Contact Us</a></li>
 			</ul>
 		</div>
 	</nav><!-- end of top nav -->
@@ -30,7 +30,7 @@
 			<section id="content"><!-- #content -->
 			
         		<article>
-							<h2><a href="#">Einsatzliste</a></h2>
+							<h2><a href="#">SMS TEXT FORM</a></h2>
 									
 							<form action="/alarmWebCreate" method="post" onsubmit="return checkrequirements()">
 							{% csrf_token %}
@@ -42,7 +42,7 @@
 								</tr>
 								<tr>
 								<td>SMS-Text</td>
-								<td><textarea rows="4" cols="50" name="comment" maxlength="160">.... max. 160 Zeichen</textarea></td>
+								<td><textarea rows="8" cols="50" name="comment" maxlength="160">.... max. 160 Zeichen</textarea></td>
 								</tr>				
 								<tr>
 								<td>Status</td>
@@ -50,36 +50,34 @@
 								</tr>
 							</table>							
 							    
-							<div id="foreikon" style="visibility:hidden">Submitte dein Einsatz</div>
-							  <input type="submit" value="Absenden" />
+			
+			  			    <input type="submit" value="Absenden" />
 							</form>
 							
-							<img src="images/list.png" alt="" class="alignleft" /><p>
-</p>
+
 						</article>
 						
-        		<article>
-							<h2><a href="#">SMS TEXT FORM</a></h2>
-						</article>
+        		
 						
 			</section><!-- end of #content -->
 		</section><!-- end of #container -->
 
 		<aside class="sidebarblock"><!-- sidebarblock -->
-				<h3>Neuer Einsatz</h3>
-				{% csrf_token %}
-							
+				<img src="static/bergwacht-logo.gif" width="94" height="116" border="0" alt="Willkommen bei der Bergwacht Bayern" title="Willkommen bei der Bergwacht Bayern">
+					<ul>
+						<li class="notruf"><a href="http://www.bergwacht-bayern.de/index.php?id=9186" onfocus="blurLink(this);">Notruf 112</a></li>
+						<li><a href="http://www.bergwacht-bayern.de/index.php?id=10084" target="_blank" onfocus="blurLink(this);">Bergwetter</a></li>
+						<li><a href="http://www.bergwacht-bayern.de/index.php?id=10083" onfocus="blurLink(this);">Danke</a></li>
+					</ul>
+					
 		</aside><!-- end of sidebarblock -->
 		
 				<aside class="sidebarblock"><!-- sidebarblock -->
-				<h3>People To See</h3>
+				<h3>Impressions</h3>
 					<ul>
-						<li><a href="#">Jane Doe</a></li>
-						<li><a href="#">John Doe</a></li>
-						<li><a href="#">Janet Doe</a></li>
-						<li><a href="#">Jimmy Doe</a></li>
-						<li><a href="#">Jackie Doe</a></li>
-						<li><a href="#">Jose Doe</a></li>
+						<li><img src="http://www.bergwacht-bayern.de/typo3temp/pics/f43ac69ec8.jpg" width="160" height="120" border="0" ></li>
+						<li><img src="http://www.bergwacht-bayern.de/typo3temp/pics/5b22d92df2.jpg" width="160" height="120" border="0" ></li>
+						<li><img src="http://www.bergwacht-bayern.de/typo3temp/pics/baf4bc2b9f.jpg" width="160" height="120" border="0" ></li>					
 					</ul>
 					
 		</aside><!-- end of sidebarblock -->
@@ -100,35 +98,32 @@
 
 			<section id="footer-outer-block">
 					<aside id="first" class="footer-segment">
-							<h3>Blogroll</h3>
+							<h3>About us</h3>
 								<ul>
-									<li><a href="#">one linkylink</a></li>
-									<li><a href="#">two linkylinks</a></li>
-									<li><a href="#">three linkylinks</a></li>
+									<li><a href="http://www.bergwacht-bayern.de/index.php?id=9">DIE BERGWACHT BAYERN</a></li>
+									<li><a href="http://www.bergwacht-bayern.de/index.php?id=24&L=0%3Fid%3D40%3Fid%3D13%3Fid%3D41%3Fid%3D9%3Fid%3D8">Chronik</a></li>							
 								</ul>
 					</aside><!-- end of #first footer segment -->
 
 					<aside id="second" class="footer-segment">
-							<h3>Awesome Stuff</h3>
+							<h3>Donate us</h3>
 								<ul>
-									<li><a href="#">one linkylink</a></li>
-									<li><a href="#">two linkylinks</a></li>
-									<li><a href="#">three linkylinks</a></li>
+									<li><a href="http://www.bergwacht-bayern.de/index.php?id=40&L=0%3Fid%3D40%3Fid%3D13%3Fid%3D41%3Fid%3D9%3Fid%3D8">Förderer werden</a></li>
 								</ul>
 					</aside><!-- end of #second footer segment -->
 
 					<aside id="third" class="footer-segment">
-							<h3>Coolness</h3>
+							<h3>Member</h3>
 								<ul>
-									<li><a href="#">one linkylink</a></li>
-									<li><a href="#">two linkylinks</a></li>
+									<li><a href="http://www.bergwacht-bayern.de/index.php?id=41&L=0">Mitglied werden</a></li>
+									<li><a href="http://www.bergwacht-bayern.de/index.php?id=5931&L=0">Informationen</a></li>
 									<li><a href="#">three linkylinks</a></li>
 								</ul>
 					</aside><!-- end of #third footer segment -->
 					
 					<aside id="fourth" class="footer-segment">
-							<h3>Blahdyblah</h3>
-								<p>&copy; 2010 <a href="#">yoursite.com</a> Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+							<h3>Impressum</h3>
+								<p>&copy; 2014 <a href="http://www.bergwacht-bayern.de/index.php?id=12&L=0%3Fid%3D40%3Fid%3D13%3Fid%3D41%3Fid%3D9%3Fid%3D8">berwacht-bayern.de</a> Powered by SG and CS (hackzurich14)</p>
 					</aside><!-- end of #fourth footer segment -->
 
 			</section><!-- end of #footer-outer-block -->
