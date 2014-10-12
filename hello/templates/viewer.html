@@ -80,9 +80,13 @@
 		
 				<aside class="sidebarblock"><!-- sidebarblock -->
 				<h3>People on the team</h3>
+					{% if people %}
 					<ul>
-					     {{ people_on_team }}
+					    {% for p in people %}
+					    <li>{{ p.name }}</li>
+					    {% endfor %}
 					</ul>
+					{% endif %}
 					
 		</aside><!-- end of sidebarblock -->
 		

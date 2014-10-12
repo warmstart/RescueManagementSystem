@@ -27,16 +27,16 @@ def incomingMessage(request):
             ## Alarm message detected -> Bounce alarm to all people
             alarm("Bergwacht " + text)
 
-        elif (text.startswith('j ') or text.startswith('J ') or text.startswith('ja') or text.startswith('Ja') or test.startswith('JA')):
+        elif (text.startswith('j ') or text.startswith('J ') or text.startswith('ja') or text.startswith('Ja') or text.startswith('JA')):
           ## Feedback case YES -> Save Feedback and add person to group
             m = getLatestMission()
-            f = feedback(fromUser=people.objects.get(phoneNumber=sender), jn = True, text=text, mission=m)
+            f = feedback(fromUser=people.objects.get(phoneNumber=sender), jn = True, text=text, fromMission=m)
             f.save()
 
         elif (text.startswith('n ') or text.startswith('N ') or text.startswith('ne') or text.startswith('Ne') or text.startswith('NE')):
           ## Feedback case NO -> Save Feedback
             m = getLatestMission()
-            f = feedback(fromUser=people.objects.get(phoneNumber=sender), jn = false, text=text, mission=m)
+            f = feedback(fromUser=people.objects.get(phoneNumber=sender), jn = false, text=text, fromMission=m)
             f.save()
 
         else:
@@ -107,7 +107,7 @@ def viewMission(request):
     all_texts = texts.objects.all()
     for t in all_texts:
         t.receiveTime = t.receiveTime.strftime('%H:%M')
-    return render(request, 'viewer.html', {'output_texts': all_texts})
+    return render(request, 'viewer.html', {'output_texts': all_texts, 'people' : getTeam()})
 
 @csrf_exempt
 def incomingLocation(request):
@@ -132,8 +132,8 @@ def incomingLocation(request):
 def getLatestMission():
     return missions.objects.get(disabled=0)
 
-def getTeam(request):
+def getTeam():
     m = getLatestMission()
-    team = people.objects.filter(feedback__jn=True).filter(feedback__fromMission=m)
+    team = people.objects.filter(feedback__jn=True)
 
-    print team
+    return team
