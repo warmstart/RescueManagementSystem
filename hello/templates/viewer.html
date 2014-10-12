@@ -8,19 +8,6 @@
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<script src="http://openlayers.org/api/OpenLayers.js"></script>
 	
-	<script>
-      function init() {
-        map = new OpenLayers.Map("basicMap");
-        var mapnik         = new OpenLayers.Layer.OSM();
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        var position       = new OpenLayers.LonLat(13.41,52.52).transform( fromProjection, toProjection);
-        var zoom           = 15; 
- 
-        map.addLayer(mapnik);
-        map.setCenter(position, zoom );
-      }
-    </script>
 </head>
 <body>
 <div id="wrapper"><!-- #wrapper -->
@@ -46,7 +33,9 @@
 			
         		<article>
 							<h2><a href="#">Einsatzliste</a></h2>
-							<div id="basicMap" style="width: 400px; height: 400px"></div>	
+							<div id="basicMap" style="width: 550px; height: 400px">
+<iframe src="http://www.mappingsupport.com/p/gmap4.php?q=http://secret-chamber-4835.herokuapp.com/getGPX.gpx" width="400px" height="400px" align="center"></iframe>
+</div>	
 														
 						</article>
 						

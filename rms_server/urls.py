@@ -23,5 +23,7 @@ urlpatterns = patterns('',
     url(r'alarmWebCreate', rescueapp.views.alarmWebCreate, name='alarmWebCreate'),
     url(r'viewMission', rescueapp.views.viewMission, name='viewMission'),
     url(r'getTeam', rescueapp.views.getTeam, name='getTeam'),
+    url(r'getGPX', rescueapp.views.getGPX, name='getGPX'),
+    url(r'getGPX.gpx', rescueapp.views.getGPX, name='getGPX'),
 
 )

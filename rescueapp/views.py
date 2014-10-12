@@ -1,6 +1,7 @@
 import json
 #import send_sms
 
+from django.template.loader import render_to_string
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -139,5 +140,11 @@ def getTeam():
     return team
 
 def getGPX(request):
-    xml = render_to_string('xml_template.xml', {'gps': gpsdata.objects.all()}
+    gps = gpsdata.objects.all()
+    for g in gps:
+        g.lat = g.data.split()[0].replace(',','.')
+        g.lon = g.data.split()[1].replace(',','.')
+    print "getgpx count" + str(gps.count())
+
+    xml = render(request, 'xml_template.xml', {'gps': gps})
     return xml
