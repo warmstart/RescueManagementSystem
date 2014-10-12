@@ -46,7 +46,7 @@
 
 		<aside class="sidebarblock"><!-- sidebarblock -->
 				<h3>SMS Receiver</h3>
-				{% csrf_token %}</br>
+				{% csrf_token %}
 
 				{% for msg in output_texts %}
 					<table border=1; width=200; style="float:left; text-align:center" margin-left:2px; margin-bottom:5px>
@@ -62,8 +62,7 @@
 					</table>
 				{% endfor %}
 
-				</br>{% csrf_token %}</br>{% csrf_token %}</br>{% csrf_token %}</br>
-							
+				<form method="post"> <input name="sms" type="text" size="160" maxlength="160">  <br> <input type="submit" value="Send"> </form>							
 		</aside><!-- end of sidebarblock -->
 		
 				<aside class="sidebarblock"><!-- sidebarblock -->
