@@ -12,6 +12,7 @@ class people(models.Model):
 class missions(models.Model):
     startTime    = models.DateTimeField()
     missionTitle = models.CharField(max_length=120)
+    disabled     = models.BooleanField(default=0)
 
 class texts(models.Model):
     fromMission  = models.ForeignKey(missions, null=True)
