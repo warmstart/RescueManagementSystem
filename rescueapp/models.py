@@ -22,6 +22,7 @@ class texts(models.Model):
 
 class feedback(models.Model):
     fromUser     = models.ForeignKey(people)
+    fromMission  = models.ForeignKey(missions)
     jn           = models.BooleanField()
     text         = models.CharField(max_length=400)
 

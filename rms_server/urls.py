@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     url(r'alarmWebStart', rescueapp.views.alarmWebStart, name='alarmWebStart'),
     url(r'alarmWebCreate', rescueapp.views.alarmWebCreate, name='alarmWebCreate'),
     url(r'viewMission', rescueapp.views.viewMission, name='viewMission'),
+    url(r'getTeam', rescueapp.views.getTeam, name='getTeam'),
 
 )

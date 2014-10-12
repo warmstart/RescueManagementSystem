@@ -8,7 +8,7 @@ from django.utils import timezone
 
 from send_sms import send_sms
 
-from rescueapp.models import texts, missions, people, gpsdata
+from rescueapp.models import *
 
 # Create your views here.
 @csrf_exempt
@@ -29,11 +29,15 @@ def incomingMessage(request):
 
         elif (text.startswith('j ') or text.startswith('J ') or text.startswith('ja') or text.startswith('Ja') or test.startswith('JA')):
           ## Feedback case YES -> Save Feedback and add person to group
-            pass
+            m = getLatestMission()
+            f = feedback(fromUser=people.objects.get(phoneNumber=sender), jn = True, text=text, mission=m)
+            f.save()
 
         elif (text.startswith('n ') or text.startswith('N ') or text.startswith('ne') or text.startswith('Ne') or text.startswith('NE')):
           ## Feedback case NO -> Save Feedback
-            pass
+            m = getLatestMission()
+            f = feedback(fromUser=people.objects.get(phoneNumber=sender), jn = false, text=text, mission=m)
+            f.save()
 
         else:
 	  ## Add the current time and save the SMS for the group chat
@@ -127,3 +131,9 @@ def incomingLocation(request):
 
 def getLatestMission():
     return missions.objects.get(disabled=0)
+
+def getTeam(request):
+    m = getLatestMission()
+    team = people.objects.filter(feedback__jn=True).filter(feedback__mission=m)
+
+    print team
