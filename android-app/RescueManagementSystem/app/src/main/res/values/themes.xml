@@ -1,0 +1,10 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+		<item name="actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.Solid</item>
+    </style>
+
+	<style name="AppTheme.Popup" parent="android:Theme.Light">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@color/popup_window_background</item>
+	</style>
+</resources>

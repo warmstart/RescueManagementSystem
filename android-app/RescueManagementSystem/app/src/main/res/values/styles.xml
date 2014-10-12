@@ -1,0 +1,21 @@
+<resources>
+    <style name="MessageListText">
+		<item name="android:textColor">#999999</item>
+		<item name="android:textSize">15sp</item>
+	</style>
+
+	<style name="MessageListText.Sender">
+		<item name="android:textColor">#555555</item>
+		<item name="android:textSize">20sp</item>
+	</style>
+
+	<style name="MessageDetailText">
+		<item name="android:textColor">#999999</item>
+		<item name="android:textSize">20sp</item>
+	</style>
+
+	<style name="MessageDetailText.Date">
+		<item name="android:textSize">15sp</item>
+		<item name="android:textStyle">italic|bold</item>
+	</style>
+</resources>

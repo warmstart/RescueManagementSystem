@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RescueManagementSystem.iml" filepath="$PROJECT_DIR$/RescueManagementSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ccmp/ccmp.iml" filepath="$PROJECT_DIR$/ccmp/ccmp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ccmp-example-android/ccmp-example-android.iml" filepath="$PROJECT_DIR$/ccmp-example-android/ccmp-example-android.iml" />
+    </modules>
+  </component>
+</project>
+

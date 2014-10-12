@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Example App</string>
+
+    <string name="main_activity_title">Example App</string>
+	<string name="menu_settings_text">Einstellungen</string>
+
+	<string name="registration_text">Bitte geben Sie Ihre Handynummer an, um sich zu registrieren</string>
+	<string name="registration_msisdn_hint_text">+43 6xx xxxxxxx</string>
+	<string name="registration_terms_text">Ich stimme den AGB zu</string>
+	<string name="registration_button_text">Anmelden</string>
+	<string name="registration_progress_text">Ihre Handynummer wird registriert…</string>
+	<string name="registration_failed_text">Bei der Registrierung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</string>
+
+	<string name="verification_in_progress_text">Ein PIN wird an Ihre Nummer gesendet. Die App erkennt diesen automatisch.</string>
+	<string name="verification_in_progress_wait_text">Bitte um etwas Geduld…</string>
+
+	<string name="pin_verification_text">Es wurde ein PIN per SMS an diese Nummer verschickt. Leider konnte er nicht automatisch erkannt werden und muss manuell eingegeben werden</string>
+	<string name="pin_verification_pin_hint_text">PIN</string>
+	<string name="pin_verification_progress_text">PIN wird überprüft…</string>
+	<string name="pin_verification_failed_text">Bei der Überprüfung des PINs ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</string>
+	<string name="pin_verification_wrong_pin_text">Der eingegebene PIN ist nicht korrekt. Bitte versuchen Sie es erneut.</string>
+
+	<string name="verification_successful_text">Danke für Ihre Anmeldung!</string>
+	<string name="verification_successful_next_text">Fertigstellen</string>
+
+	<string name="preference_popup_title">Popup aktivieren</string>
+	<string name="preference_popup_summary">Eingehende Nachrichten als Popup anzeigen</string>
+	<string name="preference_popup_locked_title">Gesperrter Screen</string>
+	<string name="preference_popup_locked_summary">Pop-up anzeigen auch wenn Screen gesperrt ist</string>
+
+    <string name="message_date_format">dd MMM</string>
+</resources>
