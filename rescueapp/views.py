@@ -133,7 +133,6 @@ def incomingLocation(request):
 def getLatestMission():
     return missions.objects.get(disabled=0)
 
-<<<<<<< HEAD
 def getTeam():
     m = getLatestMission()
     team = people.objects.filter(feedback__jn=True)
