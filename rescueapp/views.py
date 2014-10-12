@@ -133,6 +133,7 @@ def incomingLocation(request):
 def getLatestMission():
     return missions.objects.get(disabled=0)
 
+<<<<<<< HEAD
 def getTeam():
     m = getLatestMission()
     team = people.objects.filter(feedback__jn=True)
@@ -148,3 +149,9 @@ def getGPX(request):
 
     xml = render(request, 'xml_template.xml', {'gps': gps})
     return xml
+
+def getTeam(request):
+    m = getLatestMission()
+    team = people.objects.filter(feedback__jn=True).filter(feedback__fromMission=m)
+
+    print team
